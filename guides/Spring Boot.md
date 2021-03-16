@@ -130,7 +130,7 @@
 
     GET http://localhost:8080
     ```
-9. Run your application and try to use GET or POST request or both
+9. Run your application and try to use GET or POST request
 
 ## Building RESTful Web Service with MySQL
 1. Prepare your application with these dependencies :
@@ -271,3 +271,4 @@
     
     GET http://localhost:8080/users
     ```
+12. Run your application and try to use GET, POST, PUT or DELETE request
