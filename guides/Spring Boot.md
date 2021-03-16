@@ -272,3 +272,35 @@
     GET http://localhost:8080/users
     ```
 12. Run your application and try to use GET, POST, PUT or DELETE request
+
+## Using Docker
+1. Download and install these files from [download.docker.com](https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64)
+    - containerd
+    - docker-ce-cli
+    - docker-ce
+2. Create Dockerfile in your project
+    ```
+    FROM openjdk:latest
+    COPY build/libs/demo-0.0.1-SNAPSHOT.jar app.jar
+    ENTRYPOINT ["java", "-jar", "app.jar"]
+    ```
+3. Create docker-compose.yml
+    ```
+    services:
+      app:
+        container_name: demo
+        build:
+          context: .
+        ports:
+          - 8080:8080
+    ```
+    > You need docker-compose command to build your application. Follow these installation instructions [here](https://docs.docker.com/compose/install)
+4. Create ~/demo.sh
+    ```
+    #!/bin/bash
+    cd ~/demo
+    git pull
+    ./gradlew build
+    sudo docker-compose up -d --build --force-recreate
+    ```
+5. Execute `./demo.sh` on your Terminal
